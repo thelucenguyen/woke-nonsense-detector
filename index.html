@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Woke Nonsense Detector</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+        
+        .container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            max-width: 600px;
+            width: 90%;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .result {
+            font-size: 1.8em;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+        }
+        
+        .result.updated {
+            animation: pulse 0.6s ease;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        button {
+            background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            font-weight: bold;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #ee5a24, #ff6b6b);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        .word-highlight {
+            color: #ffd700;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-right: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Woke Nonsense Detector</h1>
+        <div class="result" id="result">Click the button to detect wokeness!</div>
+        <button onclick="generatePhrase()">Find Wokeness Now</button>
+    </div>
+
+    <script>
+        const words = [
+            'coffee', 'pizza', 'mathematics', 'gardening', 'reading', 'exercise', 'music', 'art',
+            'cooking', 'chess', 'hiking', 'photography', 'swimming', 'dancing', 'writing',
+            'history', 'science', 'literature', 'philosophy', 'architecture', 'astronomy',
+            'biology', 'chemistry', 'physics', 'geology', 'psychology', 'sociology',
+            'economics', 'politics', 'journalism', 'education', 'medicine', 'technology',
+            'engineering', 'agriculture', 'transportation', 'communication', 'entertainment',
+            'sports', 'fashion', 'design', 'business', 'finance', 'marketing', 'research',
+            'innovation', 'creativity', 'productivity', 'efficiency', 'sustainability',
+            'environment', 'conservation', 'recycling', 'renewable energy', 'solar power',
+            'wind energy', 'electric cars', 'public transportation', 'urban planning',
+            'community gardens', 'local farming', 'organic food', 'healthy eating',
+            'meditation', 'mindfulness', 'wellness', 'fitness', 'yoga', 'pilates',
+            'running', 'cycling', 'walking', 'nature', 'parks', 'forests', 'mountains',
+            'oceans', 'rivers', 'lakes', 'beaches', 'wildlife', 'birds', 'flowers',
+            'trees', 'seasons', 'weather', 'climate', 'travel', 'exploration',
+            'adventure', 'culture', 'traditions', 'festivals', 'celebrations',
+            'holidays', 'family', 'friendship', 'community', 'volunteering', 'charity',
+            'kindness', 'compassion', 'empathy', 'understanding', 'patience', 'tolerance',
+            'respect', 'equality', 'justice', 'freedom', 'democracy', 'human rights',
+            'peace', 'harmony', 'cooperation', 'collaboration', 'teamwork', 'leadership',
+            'mentorship', 'learning', 'growth', 'development', 'progress', 'achievement',
+            'success', 'happiness', 'joy', 'laughter', 'humor', 'fun', 'games',
+            'puzzles', 'riddles', 'mysteries', 'stories', 'movies', 'television',
+            'books', 'magazines', 'newspapers', 'podcasts', 'radio', 'internet',
+            'social media', 'networking', 'communication', 'language', 'translation',
+            'linguistics', 'grammar', 'vocabulary', 'pronunciation', 'accent', 'dialect'
+        ];
+
+        function generatePhrase() {
+            const randomWord = words[Math.floor(Math.random() * words.length)];
+            const capitalizedWord = randomWord.charAt(0).toUpperCase() + randomWord.slice(1);
+            const resultElement = document.getElementById('result');
+            
+            resultElement.innerHTML = '<span class="word-highlight">' + capitalizedWord + '</span>' + ' ' + 'is woke nonsense now';
+            resultElement.classList.remove('updated');
+            
+            // Trigger animation
+            setTimeout(() => {
+                resultElement.classList.add('updated');
+            }, 10);
+        }
+    </script>
+</body>
+</html>
